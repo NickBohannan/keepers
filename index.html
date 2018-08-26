@@ -54,9 +54,11 @@
 
     function submit_chat() {
         var chat = document.querySelector('#chatInput').value;
+        console.log(chat);
         if (chat === "") {
             return false;
         } else {
+            console.log('message sent on: ' + Date.now())
             socket.send({
                 type: "chat_message",
                 message: chat
@@ -127,23 +129,24 @@
         if (data.success === false) {
             console.log('try a different name');
         } else {
+            // grab login and body container elements
             var loginContainer = document.querySelector('#loginContainer');
-            loginContainer.parentElement.removeChild(loginContainer);
-
-            var chatInput = document.createElement("input", {
-                "id": "chatInput",
-                "value": "Chat Window"
-            });
-
             var bodyContainer = document.querySelector('#bodyContainer');
+            // remove the login element
+            loginContainer.parentElement.removeChild(loginContainer);
+            // create chat input element
+            var chatInput = document.createElement("input");
+            chatInput.id = "chatInput";
+            chatInput.value = "Enter text here";
             bodyContainer.appendChild(chatInput);
-
+            // create chat window element
             var localWindow = document.createElement("p");
             bodyContainer.appendChild(localWindow);
-
-            var chatSubmit = document.createElement("button", {
-                "onclick": "submit_chat();"
-            });
+            // create chat submit button
+            var chatSubmit = document.createElement("button");
+            chatSubmit.id = "chatSubmit";
+            chatSubmit.value = "Submit";
+            chatSubmit.addEventListener("click", submit_chat)
             bodyContainer.appendChild(chatSubmit);
 
             username = data.username;

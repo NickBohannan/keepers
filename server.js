@@ -90,8 +90,6 @@ io.on('connection', function (socket) {
                     responsefrom: data.from
                 })
                 break;
-            case "message":
-
             default:
                 socket.send({
                     type: 'error',
