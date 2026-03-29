@@ -32,7 +32,7 @@
             type: "login",
             name: username
         })
-    }
+    };
 
     function call_user() {
         var callerID = document.querySelector('#callerID').value;
@@ -50,7 +50,7 @@
                 callername: username
             });
         }
-    }
+    };
 
     function submit_chat() {
         var chat = document.querySelector('#chatInput').value;
@@ -64,7 +64,7 @@
                 message: chat
             })
         }
-    }
+    };
 
     function onAnswer(data) {
         if (busy === false) {
@@ -155,7 +155,7 @@
             console.log("logged in as: " + username);
             console.log(data.userlist);
         }
-    }
+    };
 
     socket.on('roommessage', function (message) {
         var data = message;
@@ -170,7 +170,7 @@
             default:
                 break;
         }
-    })
+    });
 
     socket.on('message', function (message) {
         var data = message;
@@ -188,8 +188,6 @@
             default:
                 break;
         }
-    })
-
+    });
 </script>
-
 </html>
